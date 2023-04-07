@@ -1,3 +1,5 @@
+import ToDoList from "./components/ToDoList";
+
 const App = () => {
   return (
     <>
@@ -6,6 +8,7 @@ const App = () => {
         <div>This is the home page</div>
         <p>Not much to see here yet</p>
       </div>
+      <ToDoList />
     </>
   );
 };
