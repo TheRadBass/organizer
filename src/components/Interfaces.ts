@@ -1,5 +1,7 @@
+export type Priority = "Low" | "Medium" | "High";
+
 export interface ToDo {
   task: string;
-  priority: "low" | "medium" | "high";
+  priority: Priority;
   dueDate: string;
 }

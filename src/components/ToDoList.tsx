@@ -1,18 +1,34 @@
-import { FormEvent, useState } from "react";
-import { ToDo } from "./Interfaces";
+import { useState } from "react";
+import { Priority, ToDo } from "./Interfaces";
 import { v4 as uuidv4 } from "uuid";
 
 const ToDoList = () => {
   const [toDos, setToDos] = useState<ToDo[]>([]);
   const [task, setTask] = useState<string>("");
+  const [priority, setPriority] = useState<Priority>();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleTask = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTask(e.target.value);
   };
 
+  const handlePriority = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (
+      e.target.value === "Low" ||
+      e.target.value === "Medium" ||
+      e.target.value === "High"
+    ) {
+      setErrorMessage("");
+      setPriority(e.target.value as Priority);
+    } else {
+      setErrorMessage(
+        `The given priority "${e.target.value}" is not a valid priority`
+      );
+    }
+  };
+
   return (
     <>
-      <p>{task}</p>
       <form className="new-to-do-form">
         <label>
           Task:
@@ -26,13 +42,14 @@ const ToDoList = () => {
         </label>
         <label>
           Priority:
-          <select name="priority" id="priority">
-            <option value={"low"}>Low</option>
-            <option value={"medium"}>Medium</option>
-            <option value={"high"}>High</option>
+          <select onChange={handlePriority} name="priority" id="priority">
+            <option value={"Low"}>Low</option>
+            <option value={"Medium"}>Medium</option>
+            <option value={"High"}>High</option>
           </select>
         </label>
         <label>
+          {errorMessage}
           Due:
           <input type="date" name="date" id="date"></input>
         </label>
