@@ -5,3 +5,7 @@ export interface ToDo {
   priority: Priority;
   dueDate: string;
 }
+
+export interface NewToDoProps {
+  createNewToDo: (toDo: ToDo) => void;
+}
