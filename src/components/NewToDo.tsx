@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { NewToDoProps, Priority } from "./Interfaces";
+import { v4 as uuidv4 } from "uuid";
 
 const NewToDo = (props: NewToDoProps) => {
   const [task, setTask] = useState<string>("");
   const [priority, setPriority] = useState<Priority>("Low");
   const [date, setDate] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [id, setId] = useState<string>(String(uuidv4()));
   const createNewToDo = props.createNewToDo;
 
   const handleTask = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,11 +15,8 @@ const NewToDo = (props: NewToDoProps) => {
   };
 
   const handlePriority = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (
-      e.target.value === "Low" ||
-      e.target.value === "Medium" ||
-      e.target.value === "High"
-    ) {
+    const validPriorities = ["Low", "Medium", "High"];
+    if (validPriorities.includes(e.target.value)) {
       setPriority(e.target.value as Priority);
     } else {
       setErrorMessage(
@@ -35,10 +34,8 @@ const NewToDo = (props: NewToDoProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (task !== "" && date !== "") {
-      //   currentTodos.push({ task: task, priority: priority, dueDate: date });
-      createNewToDo({ task: task, priority: priority, dueDate: date });
+      createNewToDo({ task: task, priority: priority, dueDate: date, id: id });
       cleanNewToDoFields();
-      setErrorMessage("");
     } else {
       setErrorMessage("All fields must be filled");
     }
@@ -48,6 +45,8 @@ const NewToDo = (props: NewToDoProps) => {
     setTask("");
     setPriority("Low");
     setDate("");
+    setErrorMessage("");
+    setId(String(uuidv4()));
   };
 
   return (

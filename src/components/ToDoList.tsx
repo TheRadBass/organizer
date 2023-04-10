@@ -1,14 +1,20 @@
 import { useState } from "react";
-import { ToDo } from "./Interfaces";
-import { v4 as uuidv4 } from "uuid";
+import { ToDoData, ToDoDataObject } from "./Interfaces";
 import NewToDo from "./NewToDo";
+import ToDo from "./ToDo";
 
 const ToDoList = () => {
-  const [toDos, setToDos] = useState<ToDo[]>([]);
+  const [toDos, setToDos] = useState<ToDoDataObject>({});
 
-  const createNewToDo = (data: ToDo) => {
-    let currentTodos = [...toDos];
-    currentTodos.push(data);
+  const createNewToDo = (data: ToDoData) => {
+    let currentTodos = { ...toDos };
+    currentTodos[data.id] = data;
+    setToDos(currentTodos);
+  };
+
+  const deleteToDo = (toDoId: string) => {
+    let currentTodos = { ...toDos };
+    delete currentTodos[toDoId];
     setToDos(currentTodos);
   };
 
@@ -16,12 +22,12 @@ const ToDoList = () => {
     <>
       <NewToDo createNewToDo={createNewToDo} />
       <div className="to-dos-wrapper">
-        {toDos.map((toDo) => (
-          <div key={uuidv4()}>
-            <p>{toDo.task}</p>
-            <p>{toDo.priority}</p>
-            <p>{String(toDo.dueDate)}</p>
-          </div>
+        {Object.keys(toDos).map((todo) => (
+          <ToDo
+            key={toDos[todo].id}
+            data={toDos[todo]}
+            deleteToDo={deleteToDo}
+          />
         ))}
       </div>
     </>
