@@ -5,6 +5,7 @@ export interface ToDoData {
   priority: Priority;
   dueDate: string;
   id: string;
+  isChecked: boolean;
 }
 
 export interface NewToDoProps {

@@ -34,7 +34,13 @@ const NewToDo = (props: NewToDoProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (task !== "" && date !== "") {
-      createNewToDo({ task: task, priority: priority, dueDate: date, id: id });
+      createNewToDo({
+        task: task,
+        priority: priority,
+        dueDate: date,
+        id: id,
+        isChecked: false,
+      });
       cleanNewToDoFields();
     } else {
       setErrorMessage("All fields must be filled");
