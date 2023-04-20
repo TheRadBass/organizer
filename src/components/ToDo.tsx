@@ -19,7 +19,7 @@ const ToDo = (props: any) => {
     <>
       <p>{task}</p>
       <p>{priority}</p>
-      <p>{String(dueDate)}</p>
+      {dueDate !== "" && <p>{String(dueDate)}</p>}
       <button onClick={handleDelete}>Delete</button>
       <input onChange={handleCheck} type="checkbox"></input>
     </>

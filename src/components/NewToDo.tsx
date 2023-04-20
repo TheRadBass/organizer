@@ -33,7 +33,7 @@ const NewToDo = (props: NewToDoProps) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (task !== "" && date !== "") {
+    if (task !== "") {
       createNewToDo({
         task: task,
         priority: priority,
