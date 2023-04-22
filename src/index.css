@@ -50,3 +50,87 @@ code {
   font-weight: bold;
   text-decoration: none;
 }
+
+.new-to-do-form {
+  align-self: center;
+  margin-top: 1em;
+}
+
+.to-dos-wrapper {
+  margin-top: 2em;
+  width: 90%;
+  align-self: center;
+}
+
+#empty-to-dos-text {
+  text-align: center;
+}
+
+.to-do {
+  display: flex;
+  background-color: rgb(234, 233, 233);
+  border: 1px solid rgb(167, 167, 167);
+  border-radius: 0.3em;
+  margin-top: 0.5em;
+  padding: 1em;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.to-do-task {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.to-do-priority {
+  width: 10%;
+}
+
+.to-do-duedate {
+  width: 20%;
+}
+
+.delete-to-do-button {
+  width: 5em;
+  border-radius: 0.2em;
+  border: 1px solid black;
+  background-color: black;
+  color: whitesmoke;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.delete-to-do-button:hover {
+  background-color: rgb(74, 74, 74);
+  transition-duration: 200ms;
+}
+
+.delete-to-do-button:active {
+  background-color: rgb(134, 28, 28);
+}
+
+.to-do-checkbox {
+  margin-left: 1em;
+  margin-right: 1em;
+  appearance: none;
+  width: 2.5em;
+  height: 2.5em;
+  border: solid 2px black;
+  border-radius: 0.2em;
+  justify-self: flex-end;
+  align-self: center;
+  transition-duration: 300ms;
+}
+
+.to-do-checkbox:hover {
+  cursor: pointer;
+}
+
+.to-do-checkbox:checked {
+  background-image: url("../public/checkmark.png");
+  background-size: 100%;
+  border-radius: 100%;
+  background-color: rgb(100, 133, 16);
+  transition-duration: 300ms;
+}

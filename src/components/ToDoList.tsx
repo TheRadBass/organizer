@@ -29,14 +29,20 @@ const ToDoList = () => {
     <>
       <NewToDo createNewToDo={createNewToDo} />
       <div className="to-dos-wrapper">
-        {Object.keys(toDos).map((todo) => (
-          <ToDo //Fix props type in ToDo, it's any at the moment.
-            key={toDos[todo].id}
-            data={toDos[todo]}
-            deleteToDo={deleteToDo}
-            toggleCheck={toggleCheck}
-          />
-        ))}
+        {Object.keys(toDos).length !== 0 ? (
+          Object.keys(toDos).map((todo) => (
+            <ToDo //Fix props type in ToDo, it's "any" at the moment.
+              key={toDos[todo].id}
+              data={toDos[todo]}
+              deleteToDo={deleteToDo}
+              toggleCheck={toggleCheck}
+            />
+          ))
+        ) : (
+          <h3 id="empty-to-dos-text">
+            Looks like you have no pending to-do's! 🙌
+          </h3>
+        )}
       </div>
     </>
   );

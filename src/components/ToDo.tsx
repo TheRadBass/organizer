@@ -16,13 +16,19 @@ const ToDo = (props: any) => {
   };
 
   return (
-    <>
-      <p>{task}</p>
-      <p>{priority}</p>
-      {dueDate !== "" && <p>{String(dueDate)}</p>}
-      <button onClick={handleDelete}>Delete</button>
-      <input onChange={handleCheck} type="checkbox"></input>
-    </>
+    <div className="to-do">
+      <p className="to-do-task">{task}</p>
+      <p className="to-do-priority">{priority}</p>
+      {dueDate !== "" && <p className="to-do-duedate">{String(dueDate)}</p>}
+      <button className="delete-to-do-button" onClick={handleDelete}>
+        Delete
+      </button>
+      <input
+        className="to-do-checkbox"
+        onChange={handleCheck}
+        type="checkbox"
+      ></input>
+    </div>
   );
 };
 
