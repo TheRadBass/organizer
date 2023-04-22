@@ -17,9 +17,10 @@ code {
   flex-flow: column;
   margin-left: 5em;
   margin-right: 5em;
+  padding-top: 1em;
 }
 
-.main_nav_bar {
+.main-nav-bar {
   align-self: center;
   display: flex;
   justify-content: center;
@@ -27,28 +28,35 @@ code {
   background-color: black;
   color: white;
   width: 90%;
-  height: 3em;
+  height: fit-content;
   border-radius: 5px;
   margin-bottom: 2em;
   margin-top: 1em;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
 }
 
-.main_nav_bar > ul > li {
+.nav-bar-button {
   list-style-type: none;
   padding: 0.5em;
   border-radius: 0.3em;
   background-color: rgb(82, 81, 81);
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-.main_nav_bar > ul > li:hover {
+.nav-bar-button:hover {
   background-color: gray;
   transition-duration: 700ms;
 }
 
-.main_nav_bar > ul > li > :first-child {
-  color: white;
-  font-weight: bold;
+.home-link {
+  color: black;
   text-decoration: none;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
 }
 
 .new-to-do-form {
@@ -81,14 +89,18 @@ code {
   display: flex;
   flex-wrap: wrap;
   width: 50%;
+  overflow: auto;
+  word-break: break-all;
+  padding-right: 2em;
 }
 
 .to-do-priority {
-  width: 10%;
+  flex-basis: 10%;
+  word-break: keep-all;
 }
 
 .to-do-duedate {
-  width: 20%;
+  flex-basis: 20%;
 }
 
 .delete-to-do-button {
@@ -114,7 +126,7 @@ code {
   margin-left: 1em;
   margin-right: 1em;
   appearance: none;
-  width: 2.5em;
+  flex-basis: 2.5em;
   height: 2.5em;
   border: solid 2px black;
   border-radius: 0.2em;
@@ -125,11 +137,12 @@ code {
 
 .to-do-checkbox:hover {
   cursor: pointer;
+  background-color: rgb(167, 164, 164);
 }
 
 .to-do-checkbox:checked {
   background-image: url("../public/checkmark.png");
-  background-size: 100%;
+  background-size: cover;
   border-radius: 100%;
   background-color: rgb(100, 133, 16);
   transition-duration: 300ms;

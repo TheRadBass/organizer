@@ -4,13 +4,15 @@ const App = () => {
   return (
     <>
       <div className="wrapper">
-        <nav className="main_nav_bar">
-          This is just a navBar
-          <ul>
-            <li>
-              <Link to={`todos`}>To-do's</Link>
-            </li>
-          </ul>
+        <Link className="home-link" to="/">
+          Organizer App
+        </Link>
+        <nav className="main-nav-bar">
+          <div>
+            <Link to={`todos`} className="nav-bar-button">
+              To-do's
+            </Link>
+          </div>
         </nav>
         <Outlet />
       </div>
