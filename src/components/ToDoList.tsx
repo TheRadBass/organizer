@@ -5,6 +5,7 @@ import ToDo from "./ToDo";
 
 const ToDoList = () => {
   const [toDos, setToDos] = useState<ToDoDataObject>({});
+  const [isCreating, setIsCreating] = useState(false);
 
   const toggleCheck = (toDoId: string) => {
     let currentTodos = { ...toDos };
@@ -27,7 +28,17 @@ const ToDoList = () => {
 
   return (
     <>
-      <NewToDo createNewToDo={createNewToDo} />
+      <button onClick={() => setIsCreating(!isCreating)}>
+        Create New To Do
+      </button>
+      {isCreating && <NewToDo createNewToDo={createNewToDo} />}
+      <div className="to-dos-info">
+        <div className="task-info">Task</div>
+        <div className="priority-info">Priority</div>
+        <div className="duedate-info">Due Date</div>
+        <div className="delete-info">Delete</div>
+        <div className="check-info">Check</div>
+      </div>
       <div className="to-dos-wrapper">
         {Object.keys(toDos).length !== 0 ? (
           Object.keys(toDos).map((todo) => (

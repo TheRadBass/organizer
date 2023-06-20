@@ -3,6 +3,12 @@ const ToDo = (props: any) => {
   const deleteToDo = props.deleteToDo;
   const toggleCheck = props.toggleCheck;
 
+  const priorityColors = {
+    High: "rgb(209, 67, 67)",
+    Medium: "rgb(234, 210, 29)",
+    Low: "rgb(61, 128, 45)",
+  };
+
   const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.disabled = true;
     toggleCheck(id);
@@ -18,8 +24,15 @@ const ToDo = (props: any) => {
   return (
     <div className="to-do">
       <p className="to-do-task">{task}</p>
-      <p className="to-do-priority">{priority}</p>
-      {dueDate !== "" && <p className="to-do-duedate">{String(dueDate)}</p>}
+      <p
+        className="to-do-priority"
+        style={{
+          backgroundColor: `${priorityColors[priority as keyof Object]}`,
+        }}
+      >
+        {priority}
+      </p>
+      <p className="to-do-duedate">{String(dueDate)}</p>
       <button className="delete-to-do-button" onClick={handleDelete}>
         Delete
       </button>

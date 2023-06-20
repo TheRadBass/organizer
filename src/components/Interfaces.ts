@@ -3,7 +3,7 @@ export type Priority = "Low" | "Medium" | "High";
 export interface ToDoData {
   task: string;
   priority: Priority;
-  dueDate?: string;
+  dueDate: string;
   id: string;
   isChecked: boolean;
 }
